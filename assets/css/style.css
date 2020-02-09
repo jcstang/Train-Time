@@ -1,5 +1,21 @@
+body {
+  background-color: #cccccc;
+}
+
 .jumbotron{
-  background-color: cornflowerblue;
+  background-color: #333;
   color: whitesmoke;
   text-align: center;
+}
+
+.card-header {
+  background-color: #333;
+}
+
+div .card {
+  margin-bottom: 21px;
+}
+
+.btn {
+  margin: 10px;
 }

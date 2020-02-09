@@ -23,14 +23,14 @@
   <body>
     <!-- MAIN container -->
     <div class="container">
-      <header class="jumbotron bg-primary">
+      <header class="jumbotron">
         <h1>Dinosaur Train Time</h1>
         <h2>Keep track and see schedule of trains.</h2>
       </header>
 
       <!-- Current Trains CARD -->
       <div class="card ">
-        <div class="card-header bg-primary">
+        <div class="card-header">
           <h3 class="text-light">Trains</h3>
         </div>
 
@@ -39,11 +39,10 @@
             <thead>
               <tr>
                 <th>Train Name</th>
-                <th>Role</th>
-                <th>Start Date</th>
-                <th>Months Worked</th>
-                <th>Monthly Rate ($)</th>
-                <th>Total Billed ($)</th>
+                <th>Destination</th>
+                <th>Frequency (min)</th>
+                <th>Next Arrival</th>
+                <th>Minutes Away</th>
               </tr>
             </thead>
             <tbody></tbody>
@@ -53,7 +52,7 @@
 
       <!-- add train form CARD -->
       <div class="card">
-        <div class="card-header bg-primary">
+        <div class="card-header">
           <h3 class="text-light">Add Train</h3>
         </div>
 
@@ -65,17 +64,17 @@
             </div>
 
             <div id="role-field">
-              <label for="role">Role</label>
+              <label for="role">Destination</label>
               <input type="text" class="form-control" name="role" id="role" />
             </div>
 
             <div id="start-date-field">
-              <label for="start-date">Start Date (MM/DD/YYYY)</label>
+              <label for="start-date">First Train Time (HH:mm - military time)</label>
               <input type="text" class="form-control" name="start-date" id="start-date"/>
             </div>
 
             <div id="monthly-rate-field">
-              <label for="monthly-rate">Monthly Rate</label>
+              <label for="monthly-rate">Frequency (min)</label>
               <input type="text" class="form-control" name="monthly-rate" id="monthly-rate"/>
             </div>
 
@@ -88,7 +87,7 @@
     </div>
     <!-- end of main container -->
 
-    
+
     <!-- jquery and app.js -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
     <script src="./assets/javascript/app.js"></script>

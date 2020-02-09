@@ -1,9 +1,9 @@
 $(document).ready(function () {
 
   var config = {
-      apiKey: "AIzaSyDmz6kNuBTasHmGbLU8hYFEhRxosir2CuY",
-      authDomain: "timesheet-example-d6c3d.firebaseio.com",
-      databaseURL: "https://timesheet-example-d6c3d.firebaseio.com/"
+      apiKey:       "AIzaSyB67m85nNRzS49VhIff-QAQb8sLi1SwyFY",
+      authDomain:   "dinosaur-train.firebaseio.com",
+      databaseURL:  "https://dinosaur-train.firebaseio.com/"
   };
 
   firebase.initializeApp(config);
