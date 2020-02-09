@@ -16,7 +16,7 @@ $(document).ready(function () {
   console.log('unix time now: ', unixTimeNow);
   // var dateString = moment.unix(employeeData.startDate).format('MM/DD/YYYY'); // input: 1273816800, output: 05/14/2010
   var timeNow = moment.unix( unixTimeNow ).format();
-  console.log('moment.calendar ', moment().calendar() );
+  // console.log('moment.calendar ', moment().calendar() );
   console.log('18 min ago: ', moment().startOf('hour').fromNow() );
 
 
@@ -43,28 +43,48 @@ $(document).ready(function () {
   // ===================================================
   database.ref().on('child_added', function(child_snapshot) {
 
-      var trainData = child_snapshot.val();
-      const row = $('<tr>');
-      
+    var trainData = child_snapshot.val();
+    const row = $('<tr>');
+    // TODO: what are the train times for trains?
+    // var i = true;
+    // while (i) {
+    //   console.log('inside while loop');
+    //   i = false;
+    // }
 
-      const trainName = $('<td>').text(trainData.name);
-      const trainDest = $('<td>').text(trainData.destination);
-      var trainFrequency = $('<td>').text(trainData.trainFrequency);
-      // const firstTrainTime = $('<td>').text(trainData.firstTrainTime);
-      // TODO: calc the next arrival time based on first train and freq and current time
-      var nextArrival = $('<td>').text( moment().calendar() );
-      // TODO: above calculated next arrival time delta to right now. Next train in 29mins.
-      var minAway = $('<td>').text('Next train in YY mins');
+    var currTrainFirstTime = trainData.firstTrainTime;
 
-      row
-          .append(trainName)
-          .append(trainDest)
-          .append(trainFrequency)
-          .append(nextArrival)
-          .append(minAway);
-          // .append(firstTrainTime)
-      
-      $('tbody').append(row);
+    console.log('first Time: ', currTrainFirstTime);
+    var startT = moment().hour(08);
+    console.log('startT: ', startT);
+
+    // var trainMomentTime = moment().hours().mins();
+    var firstHour = currTrainFirstTime.substring(0,2);
+    var firstMin = currTrainFirstTime.substring(4,6);
+    console.log('a1: ', firstHour, firstMin);
+    
+    
+    
+
+
+    const trainName = $('<td>').text(trainData.name);
+    const trainDest = $('<td>').text(trainData.destination);
+    var trainFrequency = $('<td>').text(trainData.trainFrequency);
+    // const firstTrainTime = $('<td>').text(trainData.firstTrainTime);
+    // TODO: calc the next arrival time based on first train and freq and current time
+    var nextArrival = $('<td>').text( moment().calendar() );
+    // TODO: above calculated next arrival time delta to right now. Next train in 29mins.
+    var minAway = $('<td>').text('Next train in YY mins');
+
+    row
+      .append(trainName)
+      .append(trainDest)
+      .append(trainFrequency)
+      .append(nextArrival)
+      .append(minAway);
+      // .append(firstTrainTime)
+    
+    $('tbody').append(row);
 
 
   });
