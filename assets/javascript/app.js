@@ -33,6 +33,36 @@ $(document).ready(function () {
       // var dateString = moment.unix(employeeData.startDate).format('MM/DD/YYYY'); // input: 1273816800, output: 05/14/2010
       // const startDate = $('<td>').text( dateString );
 
+      
+      
+      // ===== diff in months,  from start date to now ==============
+      // var timeNow = moment(Date.now());
+      // var diffMonths = timeNow.diff( moment(dateString), 'months', true );
+      // var howManyMonthsWorked = Math.floor(diffMonths);
+      
+      // =============== calc totalBilled ===========================
+      // var howMuchEarned = employeeData.monthlyRate * howManyMonthsWorked;
+      // console.log('howMuchEarned: ', howMuchEarned);
+      // howMuchEarned = howMuchEarned.toFixed(2);
+      // console.log('howMuchEarned: ', howMuchEarned);
+      
+      
+      // const monthsWorked = $('<td>').text('');
+      // const monthsWorked = $('<td>').text(howManyMonthsWorked);
+      // const monthlyRate = $('<td>').text(employeeData.monthlyRate);
+      // const totalBilled = $('<td>').text('$ ' + numberWithCommas(howMuchEarned) );
+      
+      // row
+      //     .append(name)
+      //     .append(role)
+      //     .append(startDate)
+      //     .append(monthsWorked)
+      //     .append(monthlyRate)
+      //     .append(totalBilled);
+      
+      // $('tbody').append(row);
+      
+
       const trainName = $('<td>').text(trainData.name);
       const trainDest = $('<td>').text(trainData.destination);
       const firstTrainTime = $('<td>').text(trainData.firstTrainTime);
@@ -47,33 +77,6 @@ $(document).ready(function () {
       $('tbody').append(row);
 
 
-      // ===== diff in months,  from start date to now ==============
-      // var timeNow = moment(Date.now());
-      // var diffMonths = timeNow.diff( moment(dateString), 'months', true );
-      // var howManyMonthsWorked = Math.floor(diffMonths);
-
-      // =============== calc totalBilled ===========================
-      // var howMuchEarned = employeeData.monthlyRate * howManyMonthsWorked;
-      // console.log('howMuchEarned: ', howMuchEarned);
-      // howMuchEarned = howMuchEarned.toFixed(2);
-      // console.log('howMuchEarned: ', howMuchEarned);
-
-
-      // const monthsWorked = $('<td>').text('');
-      // const monthsWorked = $('<td>').text(howManyMonthsWorked);
-      // const monthlyRate = $('<td>').text(employeeData.monthlyRate);
-      // const totalBilled = $('<td>').text('$ ' + numberWithCommas(howMuchEarned) );
-
-      // row
-      //     .append(name)
-      //     .append(role)
-      //     .append(startDate)
-      //     .append(monthsWorked)
-      //     .append(monthlyRate)
-      //     .append(totalBilled);
-
-      // $('tbody').append(row);
-
   });
 
 
@@ -85,13 +88,18 @@ $(document).ready(function () {
       event.preventDefault();
 
       // var name = $('#employee-name').val();
-      var trainName = $('#train-name').val().trim();
+      var trainName = $('#train-input').val();
+      // console.log(trainName);
+      
       // var role = $('#role').val();
-      var trainDestination = $('#dest-field').val().trim();
+      var trainDestination = $('#dest-input').val().trim();
       // var startDate = $('#start-date').val();
-      var trainFirstTime = $('#first-train').val().trim();
+      var trainFirstTime = $('#first-train-input').val().trim();
       // var monthlyRate = $('#monthly-rate').val();
       var trainFrequency = $('#freq-input').val().trim();
+
+      console.log(trainName, trainDestination, trainFirstTime, trainFrequency);
+      
 
       database.ref().push({
           // name: name,
