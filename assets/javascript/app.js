@@ -23,6 +23,9 @@ $(document).ready(function () {
   // THIS IS GOOD
   // this spits out an object of time 30 mins ago. 
   console.log('thing ', moment().subtract(30, 'minutes') );
+
+  
+  // TODO: get now and see what one is next
   
   
 
