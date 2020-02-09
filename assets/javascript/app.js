@@ -44,7 +44,11 @@ $(document).ready(function () {
   database.ref().on('child_added', function(child_snapshot) {
 
     var trainData = child_snapshot.val();
+    var currTrainFirstTime = trainData.firstTrainTime;
     const row = $('<tr>');
+
+
+
     // TODO: what are the train times for trains?
     // var i = true;
     // while (i) {
@@ -52,16 +56,29 @@ $(document).ready(function () {
     //   i = false;
     // }
 
-    var currTrainFirstTime = trainData.firstTrainTime;
-
-    console.log('first Time: ', currTrainFirstTime);
-    var startT = moment().hour(08);
-    console.log('startT: ', startT);
 
     // var trainMomentTime = moment().hours().mins();
     var firstHour = currTrainFirstTime.substring(0,2);
-    var firstMin = currTrainFirstTime.substring(4,6);
+    var firstMin = currTrainFirstTime.substring(3,5);
     console.log('a1: ', firstHour, firstMin);
+    var startTime = moment().hour(firstHour).minute(firstMin);
+    console.log('startTime moment object: ', startTime);
+    // good stuff here ^^^ moment object that is the start time for the train
+    var nextTrain = startTime;
+    var now = moment();
+    var trainHowOften = trainData.trainFrequency;
+
+    console.log('is nextTrain < now: ', nextTrain, now);
+    
+    
+    do {
+      nextTrain.add(trainHowOften, 'minutes');
+      // console.log('nextTrain: ', nextTrain);
+      console.log(nextTrain < now);
+      console.log('what time? ', nextTrain);
+      
+      
+    } while (nextTrain < now );
     
     
     
@@ -69,10 +86,10 @@ $(document).ready(function () {
 
     const trainName = $('<td>').text(trainData.name);
     const trainDest = $('<td>').text(trainData.destination);
-    var trainFrequency = $('<td>').text(trainData.trainFrequency);
+    var trainFrequency = $('<td>').text(trainHowOften);
     // const firstTrainTime = $('<td>').text(trainData.firstTrainTime);
     // TODO: calc the next arrival time based on first train and freq and current time
-    var nextArrival = $('<td>').text( moment().calendar() );
+    var nextArrival = $('<td>').text( nextTrain );
     // TODO: above calculated next arrival time delta to right now. Next train in 29mins.
     var minAway = $('<td>').text('Next train in YY mins');
 
@@ -95,24 +112,25 @@ $(document).ready(function () {
   // submit new train form
   // ===================================================
   $('button[type="submit"]').on('click', function (event) {
-      event.preventDefault();
+    event.preventDefault();
 
-      var trainName = $('#train-input').val();
+    var trainName = $('#train-input').val();
 
-      var trainDestination = $('#dest-input').val().trim();
-      var trainFirstTime = $('#first-train-input').val().trim();
-      var trainFrequency = $('#freq-input').val().trim();
+    var trainDestination = $('#dest-input').val().trim();
+    var trainFirstTime = $('#first-train-input').val().trim();
+    var trainFrequency = $('#freq-input').val().trim();
 
-      console.log(trainName, trainDestination, trainFirstTime, trainFrequency);
-      
+    console.log(trainName, trainDestination, trainFirstTime, trainFrequency);
+    
 
-      database.ref().push({
-          name: trainName,
-          destination: trainDestination,
-          firstTrainTime: trainFirstTime,
-          trainFrequency: trainFrequency
-      });
+    database.ref().push({
+        name: trainName,
+        destination: trainDestination,
+        firstTrainTime: trainFirstTime,
+        trainFrequency: trainFrequency
+    });
 
   });
+
 
 });
