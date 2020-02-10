@@ -1,7 +1,15 @@
+body {
+  background-image: url('../imgs/High_Speed_Railroad_Map_of_the_United_States_2013-woKey.svg');
+  background-repeat: no-repeat;
+  background-size: auto;
+  background-color: #0077BE;
+}
+
 .jumbotron{
   background-color: #333;
   color: whitesmoke;
   text-align: center;
+  opacity: 0.77;
 }
 
 .card-header {
@@ -9,9 +17,17 @@
 }
 
 div .card {
-  margin-bottom: 21px;
+  margin-bottom: 31px;
 }
 
 .btn {
   margin: 10px;
+}
+
+.top-fluff {
+  margin-bottom: 65px;
+}
+
+.card {
+  opacity: 0.92;
 }
