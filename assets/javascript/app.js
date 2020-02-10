@@ -17,12 +17,12 @@ $(document).ready(function () {
   // var dateString = moment.unix(employeeData.startDate).format('MM/DD/YYYY'); // input: 1273816800, output: 05/14/2010
   var timeNow = moment.unix( unixTimeNow ).format();
   // console.log('moment.calendar ', moment().calendar() );
-  console.log('18 min ago: ', moment().startOf('hour').fromNow() );
+  // console.log('18 min ago: ', moment().startOf('hour').fromNow() );
 
 
   // THIS IS GOOD
   // this spits out an object of time 30 mins ago. 
-  console.log('thing ', moment().subtract(30, 'minutes') );
+  // console.log('thing ', moment().subtract(30, 'minutes') );
 
   
   // TODO: get now and see what one is next
@@ -60,21 +60,21 @@ $(document).ready(function () {
     // var trainMomentTime = moment().hours().mins();
     var firstHour = currTrainFirstTime.substring(0,2);
     var firstMin = currTrainFirstTime.substring(3,5);
-    console.log('a1: ', firstHour, firstMin);
+    // console.log('a1: ', firstHour, firstMin);
     var startTime = moment().hour(firstHour).minute(firstMin);
-    console.log('startTime moment object: ', startTime);
+    // console.log('startTime moment object: ', startTime);
     // good stuff here ^^^ moment object that is the start time for the train
     var nextTrain = startTime;
     var now = moment();
     var trainHowOften = trainData.trainFrequency;
 
-    console.log('is nextTrain < now: ', nextTrain, now);
+    // console.log('is nextTrain < now: ', nextTrain, now);
     
     
     do {
       nextTrain.add(trainHowOften, 'minutes');
       console.log(nextTrain < now);
-      console.log('what time? ', nextTrain);
+      // console.log('what time? ', nextTrain);
       
       
     } while (nextTrain < now );
