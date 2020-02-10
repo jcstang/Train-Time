@@ -73,7 +73,6 @@ $(document).ready(function () {
     
     do {
       nextTrain.add(trainHowOften, 'minutes');
-      // console.log('nextTrain: ', nextTrain);
       console.log(nextTrain < now);
       console.log('what time? ', nextTrain);
       
@@ -81,17 +80,19 @@ $(document).ready(function () {
     } while (nextTrain < now );
     
     
+    var howManyMinsAway = moment(nextTrain).fromNow();
+    
     
 
 
     const trainName = $('<td>').text(trainData.name);
     const trainDest = $('<td>').text(trainData.destination);
     var trainFrequency = $('<td>').text(trainHowOften);
-    // const firstTrainTime = $('<td>').text(trainData.firstTrainTime);
     // TODO: calc the next arrival time based on first train and freq and current time
-    var nextArrival = $('<td>').text( nextTrain );
+    var nextArrival = $('<td>').text( nextTrain.format("ddd, h:mmA") );
     // TODO: above calculated next arrival time delta to right now. Next train in 29mins.
-    var minAway = $('<td>').text('Next train in YY mins');
+    // var minAway = $('<td>').text('Next train in YY mins');
+    var minAway = $('<td>').text(howManyMinsAway);
 
     row
       .append(trainName)
